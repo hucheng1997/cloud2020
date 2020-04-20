@@ -1,0 +1,31 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: cloud-payment-service
+  datasource:
+    # 当前数据源操作类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    # mysql驱动类
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.182.200:3306/cloud2020
+    username: root
+    password: 1234
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  instance:
+    instance-id: payment8002
+    prefer-ip-address: true
+    #Eureka客户端向服务端发送心跳的实际间隔，单位为秒（默认为30秒）
+    lease-renewal-interval-in-seconds: 1
+    #Eureka服务端收到最后一次心跳后等待时间上线，单位为秒（默认为90秒） 超时将剔除服务
+    lease-expiration-duration-in-seconds: 2
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  # 自定义bean位置
+  type-aliases-package: com.hucheng.bean

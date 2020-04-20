@@ -1,0 +1,19 @@
+server:
+  port: 8006
+
+spring:
+  application:
+    name: consul-provider-payment
+  #consul注册中心地址
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      #采样取值介于 0到1之间，1则表示全部收集
+      probability: 1
